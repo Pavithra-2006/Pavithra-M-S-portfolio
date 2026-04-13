@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pavithra M S | AI & Data Science Portfolio</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0d0d1a; color: #fff; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(13,13,26,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(83,74,183,0.3); }
+  .nav-logo { font-size: 1.2rem; font-weight: 700; color: #7F77DD; letter-spacing: 1px; }
+  .nav-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: #7F77DD; }
+
+  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 2rem 4rem; background: radial-gradient(ellipse at 70% 30%, rgba(83,74,183,0.18) 0%, transparent 60%), #0d0d1a; }
+  .hero-container { display: flex; align-items: center; gap: 4rem; max-width: 1000px; width: 100%; flex-wrap: wrap; justify-content: center; }
+  .hero-left { flex-shrink: 0; }
+  .hero-photo-frame { width: 320px; height: 320px; border-radius: 20px; overflow: hidden; border: 2px solid rgba(127,119,221,0.5); background: rgba(83,74,183,0.15); display: flex; align-items: center; justify-content: center; }
+  .hero-photo-frame img {width: 100%;height: 100%;object-fit: cover;display: block;
+}
+  .cert-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cert-logo img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+  .hero-stats-wrapper {display: flex;justify-content: center;width: 100%;}
+  .hero-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 6rem; font-weight: 900; color: rgba(127,119,221,0.4); }
+  .hero-right { flex: 1; min-width: 280px; }
+  .hero-badge { display: inline-block; background: rgba(83,74,183,0.2); border: 1px solid rgba(127,119,221,0.4); color: #7F77DD; font-size: 0.75rem; padding: 6px 16px; border-radius: 99px; margin-bottom: 1.25rem; letter-spacing: 2px; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; line-height: 1.1; margin-bottom: 0.5rem; }
+  .hero h1 span { background: linear-gradient(135deg, #7F77DD, #5DCAA5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-role { font-size: 0.95rem; color: #5DCAA5; font-weight: 600; margin-bottom: 1.25rem; letter-spacing: 0.5px; }
+  .hero-subtitle { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 2rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .btn-primary { background: linear-gradient(135deg, #534AB7, #7F77DD); color: #fff; padding: 12px 28px; border-radius: 99px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: opacity 0.2s, transform 0.2s; }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+  .btn-outline { border: 1px solid rgba(127,119,221,0.5); color: #7F77DD; padding: 12px 28px; border-radius: 99px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.2s, transform 0.2s; }
+  .btn-outline:hover { background: rgba(127,119,221,0.1); transform: translateY(-2px); }
+  .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;   justify-content: center;max-width: 700px;margin: 0 auto;}
+  .stat-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(127,119,221,0.15); border-radius: 12px; padding: 0.9rem 1rem; }
+  .stat-num { font-size: 1.6rem; font-weight: 800; color: #7F77DD; }
+  .stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+  @media (max-width: 700px) {
+    .hero-container { flex-direction: column; gap: 2.5rem; }
+    .hero-photo-frame { width: 220px; height: 220px; }
+    .hero-right { text-align: center; }
+    .hero-btns { justify-content: center; }
+  }
+
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-tag { font-size: 0.75rem; font-weight: 700; color: #7F77DD; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 0.5rem; }
+  .section-title span { background: linear-gradient(135deg, #7F77DD, #5DCAA5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .section-line { width: 50px; height: 3px; background: linear-gradient(90deg, #534AB7, #1D9E75); border-radius: 2px; margin-bottom: 3rem; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .skill-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(127,119,221,0.2); border-radius: 16px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+  .skill-card:hover { border-color: #7F77DD; transform: translateY(-4px); }
+  .skill-card-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+  .skill-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 0.72rem; padding: 4px 10px; border-radius: 99px; background: rgba(83,74,183,0.15); border: 1px solid rgba(127,119,221,0.25); color: #7F77DD; font-weight: 500; }
+  .tag.teal { background: rgba(29,158,117,0.15); border-color: rgba(93,202,165,0.25); color: #5DCAA5; }
+  .tag.coral { background: rgba(216,90,48,0.15); border-color: rgba(216,90,48,0.3); color: #F0997B; }
+  .tag.amber { background: rgba(186,117,23,0.15); border-color: rgba(239,159,39,0.3); color: #FAC775; }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .project-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(127,119,221,0.15); border-radius: 16px; padding: 1.75rem; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #534AB7, #1D9E75); }
+  .project-card:hover { border-color: #7F77DD; transform: translateY(-4px); }
+  .project-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .project-card p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 1rem; }
+  .project-links { display: flex; gap: 10px; margin-top: 1rem; flex-wrap: wrap; }
+  .project-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; padding: 5px 14px; border-radius: 99px; text-decoration: none; border: 1px solid rgba(127,119,221,0.3); color: #7F77DD; transition: background 0.2s; }
+  .project-link:hover { background: rgba(127,119,221,0.15); }
+  .project-link.demo { border-color: rgba(93,202,165,0.3); color: #5DCAA5; }
+  .project-link.demo:hover { background: rgba(29,158,117,0.1); }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .project-tag { font-size: 0.7rem; padding: 3px 10px; border-radius: 99px; background: rgba(29,158,117,0.15); border: 1px solid rgba(93,202,165,0.2); color: #5DCAA5; }
+
+  .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .exp-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(127,119,221,0.15); border-radius: 16px; padding: 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start; }
+  .exp-logo { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700; color: #7F77DD; flex-shrink: 0; overflow: hidden; }
+  .exp-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .exp-body { flex: 1; }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+  .exp-title { font-size: 1.05rem; font-weight: 700; }
+  .exp-company-link { font-size: 0.85rem; color: #7F77DD; font-weight: 600; margin: 4px 0; text-decoration: none; display: inline-block; }
+  .exp-company-link:hover { text-decoration: underline; }
+  .exp-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-top: 0.5rem; }
+  .exp-date { font-size: 0.75rem; color: rgba(255,255,255,0.4); white-space: nowrap; padding: 4px 10px; background: rgba(127,119,221,0.1); border-radius: 99px; border: 1px solid rgba(127,119,221,0.2); }
+
+  .edu-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(29,158,117,0.2); border-radius: 16px; padding: 1.75rem; margin-bottom: 1.25rem; }
+  .edu-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .edu-card p { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+  .edu-year { font-size: 0.78rem; color: #5DCAA5; margin-top: 6px; }
+
+  .cert-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .cert-card { background: rgba(186,117,23,0.12); border: 1px solid rgba(239,159,39,0.25); border-radius: 12px; padding: 0.9rem 1.2rem; display: flex; align-items: center; gap: 10px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+  .cert-card:hover { background: rgba(186,117,23,0.2); transform: translateY(-2px); }
+  .cert-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .cert-name { font-size: 0.82rem; font-weight: 600; color: #FAC775; }
+  .cert-issuer { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+  .cert-badge { font-size: 0.65rem; color: #5DCAA5; margin-top: 2px; }
+
+  .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .lead-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(127,119,221,0.15); border-radius: 12px; padding: 1.25rem; display: flex; align-items: center; gap: 12px; }
+  .lead-logo { width: 44px; height: 44px; border-radius: 8px; object-fit: contain; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; color: #7F77DD; flex-shrink: 0; overflow: hidden; }
+  .lead-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .lead-role { font-size: 0.85rem; font-weight: 700; }
+  .lead-org { font-size: 0.78rem; color: #7F77DD; }
+  .lead-year { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+  .contact-link {display: flex;align-items: center;gap: 8px;}
+  .contact-link i {font-size: 1rem;}
+  .contact-section { background: rgba(83,74,183,0.08); border: 1px solid rgba(127,119,221,0.2); border-radius: 24px; padding: 3rem 2rem; text-align: center; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
+  .contact-link { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 99px; border: 1px solid rgba(127,119,221,0.3); color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; transition: background 0.2s, color 0.2s; }
+  .contact-link:hover { background: rgba(127,119,221,0.15); color: #7F77DD; }
+  footer { text-align: center; padding: 2rem; color: rgba(255,255,255,0.25); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Pavithra M S</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO SECTION — Square Photo Left + About Right
+     ═══════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-container">
+
+    <!-- LEFT: Square photo frame -->
+    <div class="hero-left">
+      <div class="hero-photo-frame">
+
+            <img src="blazer1.jpg"                 
+                alt="Pavithra M S">                 
+
+      <div class="hero-photo-frame">
+  <img src="blazer1.jpg" alt="Pavithra M S">
+</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: About info -->
+    <div class="hero-right">
+      <div class="hero-badge">AI & Data Science Enthusiast</div>
+      <h1>Hi, I'm<br><span>Pavithra M S</span></h1>
+      <div class="hero-role">ML Engineer · Data Scientist · AI Enthusiast</div>
+      <p class="hero-subtitle">Results-driven aspiring Data Scientist with a strong foundation in machine learning, data analysis, and model development using Python. Experienced in building practical ML solutions, including classification models and recommendation systems, with hands-on exposure to real-world datasets. Completed a Data Science internship, applying algorithms like KNN, Decision Trees, and Naive Bayes. Additionally skilled in full-stack development and UI/UX design, enabling end-to-end project execution. Demonstrates leadership and collaboration through active involvement in Rotaract and technical communities.</p>
+
+      <div class="hero-btns">
+        <a href="https://drive.google.com/file/d/1yrTPWTVbEeYgIDX77mlTA8Vd1vUdFOFc/view?usp=sharing" target="_blank" class="btn-primary">Download Resume</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+    <div class="hero-stats-wrapper">
+      <div class="hero-stats">
+        <div class="stat-box"><div class="stat-num">250+</div><div class="stat-label">DSA Problems</div></div>
+        <div class="stat-box"><div class="stat-num">4+</div><div class="stat-label">ML Projects</div></div>
+        <div class="stat-box"><div class="stat-num">2</div><div class="stat-label">Internships</div></div>
+        <div class="stat-box"><div class="stat-num">2027</div><div class="stat-label">B.Tech Graduate</div></div>
+      </div>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SKILLS SECTION
+     ═══════════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="section-tag">What I work with</div>
+  <h2 class="section-title">Skills & <span>Technologies</span></h2>
+  <div class="section-line"></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon"></div>
+      <h3>Programming Languages</h3>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">HTML</span><span class="tag">CSS</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon"></div>
+      <h3>Machine Learning Frameworks</h3>
+      <div class="skill-tags">
+        <span class="tag teal">Scikit-learn</span><span class="tag teal">XGBoost</span><span class="tag teal">LightGBM</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon"></div>
+      <h3>Deep Learning Frameworks</h3>
+      <div class="skill-tags">
+        <span class="tag amber">PyTorch</span><span class="tag amber">Tensor Flow</span><span class="tag amber">Keras</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon"></div>
+      <h3>NLP & LLM Frameworks</h3>
+      <div class="skill-tags">
+        <span class="tag coral">Hugging Face Transformers</span><span class="tag coral">LangChain</span><span class="tag coral">LlamaIndex</span>
+      </div>
+    </div>
+
+    
+    <div class="skill-card">
+      <div class="skill-card-icon"></div>
+      <h3>Computer Vision Framework</h3>
+      <div class="skill-tags">
+        <span class="tag teal">OpenCV</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-card-icon"></div>
+      <h3>Data Analysis</h3>
+      <div class="skill-tags">
+        <span class="tag coral">EDA</span><span class="tag coral">Feature Engineering</span><span class="tag coral">Data Cleaning</span><span class="tag coral">Statistical Analysis</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon"></div>
+      <h3>Libraries & Tools</h3>
+      <div class="skill-tags">
+        <span class="tag amber">Pandas</span><span class="tag amber">NumPy</span><span class="tag amber">Scikit-learn</span><span class="tag amber">Streamlit</span><span class="tag amber">Matplotlib</span><span class="tag amber">Seaborn</span><span class="tag amber">Git</span><span class="tag amber">Joblib</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon"></div>
+      <h3>Core ML Concepts</h3>
+      <div class="skill-tags">
+        <span class="tag">Cross-Validation</span><span class="tag">Hyperparameter Tuning</span><span class="tag">Regularization</span><span class="tag">ROC-AUC</span><span class="tag">Model Serialization</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     PROJECTS SECTION
+     ═══════════════════════════════════════════════════ -->
+<section id="projects">
+  <div class="section-tag">What I've built</div>
+  <h2 class="section-title">Featured <span>Projects</span></h2>
+  <div class="section-line"></div>
+  <div class="projects-grid">
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <h3>Customer Churn Prediction System</h3>
+      <p>Developed a machine learning-based Customer Churn Prediction System to identify users at risk of leaving a service, enabling proactive retention strategies. The project involved end-to-end pipeline development, including data preprocessing, feature engineering, model training, and evaluation.
+
+Implemented classification algorithms such as Logistic Regression, Decision Tree, and Random Forest to predict churn behavior based on customer demographics, usage patterns, and transaction history. Performed data cleaning, handled missing values, and optimized features to improve model performance.
+
+Evaluated models using key performance metrics including Accuracy, Precision, Recall, and F1-score to ensure reliable predictions. The system provides actionable insights that help businesses reduce churn and improve customer retention.</p>
+      <div class="project-tags">
+        <span class="project-tag">Scikit-learn</span><span class="project-tag">Streamlit</span><span class="project-tag">Joblib</span><span class="project-tag">Random Forest</span>
+      </div>
+      <div class="project-links">
+        <!--
+        ╔══════════════════════════════════════════════╗
+        ║  PROJECT 2 LINKS                             ║
+        ╚══════════════════════════════════════════════╝
+        -->
+        <a href="https://github.com/Pavithra-2006/Customer-Churn-Prediction-App" target="_blank" class="project-link"> GitHub</a>
+        <a href="https://shorturl.at/XCrse" target="_blank" class="project-link demo">▶ Live Demo</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <div class="project-card">
+      <h3>Song Recommendation System</h3>
+      <p>Developed a machine learning-based Song Recommendation System to suggest relevant songs based on audio features and user preferences, enhancing personalized music discovery. The project involved building an end-to-end pipeline including data preprocessing, feature extraction, model training, and recommendation generation.
+
+Implemented algorithms such as K-Nearest Neighbors (KNN), Decision Tree, and Naive Bayes to analyze song characteristics like tempo, energy, loudness, and danceability. Performed data cleaning, normalization, and feature selection to improve model efficiency and recommendation accuracy.
+
+Evaluated model performance using classification metrics and similarity measures to ensure meaningful and relevant song suggestions. The system generates personalized recommendations by identifying songs with similar audio profiles, improving user engagement and listening experience.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span><span class="project-tag">KNN</span><span class="project-tag">Pandas</span><span class="project-tag">Cosine Similarity</span>
+      </div>
+      <div class="project-links">
+        <!--
+        ╔══════════════════════════════════════════════╗
+        ║  PROJECT 1 LINKS                             ║
+        ║  Replace # with your actual URLs             ║
+        ╚══════════════════════════════════════════════╝
+        -->
+        <!-- If no live demo, delete the demo link above -->
+      </div>
+    </div>
+
+
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+      <h3>HR Analytics — Attrition Prediction</h3>
+      <p>Developed a machine learning-based HR Analytics system to predict employee attrition and identify individuals at risk of leaving the organization, enabling data-driven workforce retention strategies. The project involved end-to-end pipeline development, including data preprocessing, feature engineering, model training, and evaluation.
+
+Implemented classification algorithms such as Logistic Regression, Decision Tree, and Random Forest to analyze employee data, including job role, salary, work experience, job satisfaction, and performance metrics. Performed data cleaning, handled missing values, and optimized features to improve model performance and prediction accuracy.
+
+Evaluated models using key performance metrics including Accuracy, Precision, Recall, and F1-score to ensure reliable predictions. The system provides actionable insights that help organizations reduce employee turnover, improve retention strategies, and enhance overall workforce planning.</p>
+      <div class="project-tags">
+        <span class="project-tag">Logistic Regression</span><span class="project-tag">EDA</span><span class="project-tag">Scikit-learn</span>
+      </div>
+      <div class="project-links">
+        <!--
+        ╔══════════════════════════════════════════════╗
+        ║  PROJECT 3 LINKS                             ║
+        ╚══════════════════════════════════════════════╝
+        -->
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project-card">
+      <h3>Handwritten Digit Recognition</h3>
+      <p>Developed a machine learning-based Handwritten Digit Recognition system to accurately classify digits from image data, demonstrating the application of computer vision and pattern recognition techniques. The project involved end-to-end pipeline development, including data preprocessing, feature extraction, model training, and evaluation.
+
+Implemented classification algorithms such as K-Nearest Neighbors (KNN), Support Vector Machine (SVM), and Neural Networks to recognize digits from grayscale images (e.g., MNIST dataset). Performed image preprocessing techniques including normalization, resizing, and noise reduction to enhance model performance.
+
+Evaluated models using key performance metrics such as Accuracy and Confusion Matrix to ensure reliable classification results. The system achieves high prediction accuracy and can be applied in real-world scenarios like automated form processing and digit recognition tasks.</p>
+      <div class="project-tags">
+        <span class="project-tag">CNN</span><span class="project-tag">Deep Learning</span><span class="project-tag">Python</span><span class="project-tag">Computer Vision</span>
+      </div>
+      <div class="project-links">
+        <!--
+        ╔══════════════════════════════════════════════╗
+        ║  PROJECT 4 LINKS                             ║
+        ╚══════════════════════════════════════════════╝
+        -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     WORK EXPERIENCE SECTION
+     ═══════════════════════════════════════════════════ -->
+<section id="experience">
+  <div class="section-tag">Where I've worked</div>
+  <h2 class="section-title">Work <span>Experience</span></h2>
+  <div class="section-line"></div>
+  <div class="exp-list">
+
+    <!-- EXPERIENCE 1 -->
+    <div class="exp-card">
+
+          <div class="exp-logo">                    
+            <img src="krishtec_logo.jpeg" alt="KT"> 
+          </div>                                    
+
+      <div class="exp-body">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Data Science Intern</div>
+            <!--
+            ╔══════════════════════════════════════════════╗
+            ║  KRISH TEC WEBSITE LINK                      ║
+            ║  Replace # with company website URL          ║
+            ╚══════════════════════════════════════════════╝
+            -->
+            <a href="KRISHTEC_WEBSITE_URL" target="_blank" class="exp-company-link">Krish Tec</a>
+          </div>
+          <div class="exp-date">Jan – Feb 2025</div>
+        </div>
+        <div class="exp-desc">Built a KNN-based music recommendation engine on 5,000+ records using Python & Pandas, improving similarity predictions by ~75%. Performed EDA, feature engineering, and version control with Git & GitHub.</div>
+        <ul class="exp-desc">
+  <li>Built and deployed a collaborative filtering recommendation system using KNN and cosine similarity to deliver personalized song suggestions.</li>
+  
+  <li>Performed data preprocessing, feature engineering, and scaling to improve model robustness and prediction accuracy.</li>
+  
+  <li>Enhanced recommendation relevance by ~75% through hyperparameter tuning and similarity optimization.</li>
+  
+  <li>Developed using Python ML stack (Pandas, NumPy, Scikit-learn) with version control and reproducibility maintained via Git.</li>
+</ul>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE 2 -->
+    <div class="exp-card">
+
+          <div class="exp-logo">                    
+            <img src="appintechnologies_logo.jpeg" alt="KT"> 
+          </div> 
+      <!--
+      ╔══════════════════════════════════════════════╗
+      ║  APPIN TECHNOLOGY LOGO                       ║
+      ║  Replace "AT" with an <img> tag if you       ║
+      ║  have a logo URL or file                     ║
+      ╚══════════════════════════════════════════════╝
+      -->
+      <div class="exp-body">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Web Development Intern</div>
+            <!--
+            ╔══════════════════════════════════════════════╗
+            ║  APPIN TECHNOLOGY WEBSITE LINK               ║
+            ║  Replace # with company website URL          ║
+            ╚══════════════════════════════════════════════╝
+            -->
+            <a href="APPIN_WEBSITE_URL" target="_blank" class="exp-company-link">Appin Technology ·</a>
+          </div>
+          <div class="exp-date">Jun – Jul 2025</div>
+        </div>
+        <div class="exp-desc">Built frontend components for an e-commerce website using HTML, CSS, and JavaScript.</div>
+            <ul class="exp-desc">
+      <li>Developed responsive web interfaces using HTML, CSS, and JavaScript.</li>
+      <li>Collaborated with the team to improve UI/UX and optimize website performance.</li>
+      <li>Integrated backend APIs and ensured cross-browser compatibility.</li>
+    </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     EDUCATION SECTION
+     ═══════════════════════════════════════════════════ -->
+<section id="education">
+  <div class="section-tag">Academic background</div>
+  <h2 class="section-title">Education</h2>
+  <div class="section-line"></div>
+  <div class="edu-card">
+    <h3>B.Tech in Artificial Intelligence and Data Science</h3>
+    <p>KPR Institute of Engineering and Technology · Coimbatore, India</p>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.4); margin-top:4px;">Coursework: Machine Learning, Data Science, Data Analytics, Deep Learning</p>
+    <div class="edu-year">July 2023 – June 2027</div>
+  </div>
+  <div class="edu-card">
+    <h3>HSC – Higher Secondary Education</h3>
+    <p>SSSIVS Higher Secondary School · Erode, India</p>
+    <div class="edu-year">June 2022 – Apr 2023</div>
+  </div>
+  <div class="edu-card">
+    <h3>SSLC – Senior Secondary Education</h3>
+    <p>SSSIVS Higher Secondary School · Erode, India</p>
+    <div class="edu-year">June 2020 – Apr 2021</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     CERTIFICATIONS SECTION
+     ═══════════════════════════════════════════════════ -->
+<section>
+  <div class="section-tag">Credentials</div>
+  <h2 class="section-title">Certifications</h2>
+  <div class="section-line"></div>
+  <div class="cert-grid">
+
+    <!--
+    ╔══════════════════════════════════════════════╗
+    ║  CERTIFICATION LINKS                         ║
+    ║  Replace each href="#" with your actual      ║
+    ║  certificate URL (NPTEL / HackerRank)        ║
+    ║  If no link, remove href and target attrs    ║
+    ╚══════════════════════════════════════════════╝
+    -->
+
+    <a href="https://drive.google.com/file/d/1eWLaOpVNSNmAhEaLrLef2kNTx4Cs_s9g/view?usp=sharing" target="_blank" class="cert-card">
+      <img src="nptel logo.png" class="cert-logo" alt="NPTEL">
+      <div>
+        <div class="cert-name">Data Analytics with Python</div>
+        <div class="cert-issuer">NPTEL</div>
+        <div class="cert-badge">View Certificate ↗</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1kQlsT86HtBZbGy8OZxIRq61M0iDvKoB1/view?usp=sharing" target="_blank" class="cert-card">
+      <img src="nptel logo.png" class="cert-logo" alt="NPTEL">
+      <div>
+        <div class="cert-name">Social Network Analysis</div>
+        <div class="cert-issuer">NPTEL</div>
+        <div class="cert-badge">View Certificate ↗</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1A5qE3qehd84cfAICfI6ToRn-ldhl1vHJ/view?usp=drive_link" target="_blank" class="cert-card">
+      <img src="hackerrank-logo.jpg" class="cert-logo" alt="HackerRank">
+      <div>
+        <div class="cert-name">Problem Solving Basic</div>
+        <div class="cert-issuer">HackerRank</div>
+        <div class="cert-badge">View Certificate ↗</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/19OnqOAX-9RO3bvzsRsoHayTobITrfNz8/view?usp=sharing" target="_blank" class="cert-card">
+      <img src="krishtec_logo.jpeg" class="cert-logo" alt="NPTEL">
+      <div>
+        <div class="cert-name">Data Science Intern</div>
+        <div class="cert-issuer">Krish Tec</div>
+        <div class="cert-badge">View Certificate ↗</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     LEADERSHIP SECTION
+     ═══════════════════════════════════════════════════ -->
+<section>
+  <div class="section-tag">Beyond the code</div>
+  <h2 class="section-title">Leadership & <span>Clubs</span></h2>
+  <div class="section-line"></div>
+  <div class="leadership-grid">
+
+    <!--
+    ╔══════════════════════════════════════════════╗
+    ║  CLUB LOGOS                                  ║
+    ║  For each club, replace the text inside      ║
+    ║  .lead-logo with an <img> tag if you have    ║
+    ║  a logo file or URL:                         ║
+    ║    <img src="club_logo.png" alt="Club">      ║
+    ╚══════════════════════════════════════════════╝
+    -->
+
+    <div class="lead-card">
+      <div class="lead-logo">
+        <img src="Ignitrron logo.png" alt="Club">
+      </div>  <!-- Replace IG with club logo img -->
+      <div>
+        <div class="lead-role">Design Team Member</div>
+        <div class="lead-org">Ignitrron Technical Club · KPRIET</div>
+        <div class="lead-year">2024–25</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-logo">
+        <img src="dc logo.jpg" alt="Club">
+      </div>  <!-- Replace DC with club logo img -->
+      <div>
+        <div class="lead-role">Design Club Member</div>
+        <div class="lead-org">Design Club · KPRIET</div>
+        <div class="lead-year">2024–25</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-logo">
+        <img src="phoenix logo.jpg" alt="Club">
+      </div>  <!-- Replace RC with club logo img -->
+      <div>
+        <div class="lead-role">Membership Chair</div>
+        <div class="lead-org">Rotaract Club of Phoenix · Tiruppur</div>
+        <div class="lead-year">2024–25</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-logo">
+        <img src="phoenix logo.jpg" alt="Club">
+      </div>  <!-- Replace RC with club logo img -->
+      <div>
+        <div class="lead-role">Secretary</div>
+        <div class="lead-org">Rotaract Club of Phoenix · Tiruppur</div>
+        <div class="lead-year">2025–26</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     CONTACT SECTION
+     ═══════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="contact-section">
+    <div class="section-tag" style="margin-bottom:0.5rem;">Let's connect</div>
+    
+    <h2 class="section-title">Get In <span>Touch</span></h2>
+    
+    <p style="color:rgba(255,255,255,0.5); font-size:0.9rem; margin-top:0.5rem;">
+      Open to ML Engineer internships & exciting AI/Data Science projects
+    </p>
+
+    <div class="contact-links">
+      
+      <a href="mailto:pavithrams2006@gmail.com" class="contact-link">
+        <i class="fas fa-envelope"></i>
+        pavithrams2006@gmail.com
+      </a>
+
+      <a href="https://github.com/Pavithra-2006" target="_blank" class="contact-link">
+        <i class="fab fa-github"></i>
+        GitHub
+      </a>
+
+      <a href="https://linkedin.com/in/pavithra-ms" target="_blank" class="contact-link">
+        <i class="fab fa-linkedin"></i>
+        LinkedIn
+      </a>
+
+      <a href="https://leetcode.com/Pavithra-Sekar" target="_blank" class="contact-link">
+        <i class="fas fa-code"></i>
+        LeetCode
+      </a>
+
+      <a href="tel:+916382875243" class="contact-link">
+        <i class="fas fa-phone"></i>
+        +91 63828 75243
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built with passion · Pavithra M S · 2025</p>
+</footer>
+
+</body>
+</html>
