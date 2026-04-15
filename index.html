@@ -19,25 +19,9 @@
   .hero-container { display: flex; align-items: center; gap: 4rem; max-width: 1000px; width: 100%; flex-wrap: wrap; justify-content: center; }
   .hero-left { flex-shrink: 0; }
   .hero-photo-frame { width: 320px; height: 320px; border-radius: 20px; overflow: hidden; border: 2px solid rgba(127,119,221,0.5); background: rgba(83,74,183,0.15); display: flex; align-items: center; justify-content: center; }
-  .hero-photo-frame img {width: 100%;height: 100%;object-fit: cover;display: block;
-}
-  .cert-logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.cert-logo img {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
-}
+  .hero-photo-frame img {width: 100%;height: 100%;object-fit: cover;display: block;}
+  .cert-logo {width: 44px;height: 44px;border-radius: 8px;background: rgba(255,255,255,0.08);display: flex;align-items: center;justify-content: center;overflow: hidden;flex-shrink: 0;}
+  .cert-logo img {width: 80%;height: 80%;object-fit: contain;}
   .hero-stats-wrapper {display: flex;justify-content: center;width: 100%;}
   .hero-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 6rem; font-weight: 900; color: rgba(127,119,221,0.4); }
   .hero-right { flex: 1; min-width: 280px; }
@@ -79,7 +63,7 @@
   .tag.coral { background: rgba(216,90,48,0.15); border-color: rgba(216,90,48,0.3); color: #F0997B; }
   .tag.amber { background: rgba(186,117,23,0.15); border-color: rgba(239,159,39,0.3); color: #FAC775; }
 
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .projects-grid { display: grid; grid-template-columns:1fr; gap: 2rem; }
   .project-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(127,119,221,0.15); border-radius: 16px; padding: 1.75rem; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
   .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #534AB7, #1D9E75); }
   .project-card:hover { border-color: #7F77DD; transform: translateY(-4px); }
@@ -396,7 +380,7 @@ Evaluated models using key performance metrics such as Accuracy and Confusion Ma
             ║  Replace # with company website URL          ║
             ╚══════════════════════════════════════════════╝
             -->
-            <a href="KRISHTEC_WEBSITE_URL" target="_blank" class="exp-company-link">Krish Tec</a>
+            <a href="KRISHTEC_WEBSITE_URL" target="_blank" class="exp-company-link">Krish Tec .</a>
           </div>
           <div class="exp-date">Jan – Feb 2025</div>
         </div>
